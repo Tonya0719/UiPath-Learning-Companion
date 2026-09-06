@@ -9,10 +9,7 @@ def _load_streamlit_secrets():
         import streamlit as st
     except ImportError:
         return {}
-    try:
-        return dict(st.secrets)
-    except Exception:
-        return {}
+    return st.secrets
 
 _secrets = _load_streamlit_secrets()
 
@@ -24,9 +21,13 @@ if (ROOT / '.env').exists():
             os.environ.setdefault(key.strip(), value.strip().strip('\"\'')) 
 
 def _get(key, default):
-    if key in _secrets:
-        return _secrets[key]
-    return os.getenv(key, default)
+    value = os.getenv(key)
+    if value not in (None, ''):
+        return value
+    try:
+        return _secrets.get(key, default)
+    except Exception:
+        return default
 
 MOCK_LLM = str(_get('MOCK_LLM', 'true')).lower() == 'true'
 LLM_API_KEY = _get('LLM_API_KEY', '')
