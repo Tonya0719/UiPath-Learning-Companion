@@ -1,4 +1,6 @@
-from typing import Literal
+from __future__ import annotations
+
+from typing import Literal, Optional, Union
 from pydantic import BaseModel, Field, model_validator
 Status = Literal['ANSWERED', 'INSUFFICIENT_EVIDENCE', 'NEED_MORE_INFORMATION', 'OUT_OF_SCOPE']
 
@@ -7,17 +9,17 @@ class Evidence(BaseModel):
     source_label: str = ''
     text: str = ''
     source_pages: list[int] = Field(default_factory=list)
-    url: str | None = None
-    product: str | None = None
-    version: str | None = None
-    checked_on: str | None = None
+    url: Optional[str] = None
+    product: Optional[str] = None
+    version: Optional[str] = None
+    checked_on: Optional[str] = None
 
 class LearningAnswer(BaseModel):
     status: Status
     answer: str = ''
     key_concept: str = ''
-    exercise_connection: str | None = None
-    common_misunderstanding: str | None = None
+    exercise_connection: Optional[str] = None
+    common_misunderstanding: Optional[str] = None
     need_more_information: list[str] = Field(default_factory=list)
     evidence: list[Evidence] = Field(default_factory=list)
     @model_validator(mode='after')
@@ -32,7 +34,7 @@ class NextStepAnswer(BaseModel):
     next_actions: list[str] = Field(default_factory=list, max_length=3)
     activity_or_expression: list[str] = Field(default_factory=list)
     expected_result: str = ''
-    common_mistake: str | None = None
+    common_mistake: Optional[str] = None
     verification: str = ''
     need_more_information: list[str] = Field(default_factory=list)
     evidence: list[Evidence] = Field(default_factory=list)
@@ -47,7 +49,7 @@ class DebugCause(BaseModel):
     check: str
     fix: str
     rationale: str = ''
-    confidence: float | None = Field(default=None, ge=0, le=1)
+    confidence: Optional[float] = Field(default=None, ge=0, le=1)
 
 class DebugAnswer(BaseModel):
     status: Status
@@ -90,12 +92,12 @@ class PracticeQuestion(BaseModel):
         return self
 
 class QuestionExplanation(BaseModel):
-    status: Status | Literal['NEEDS_REVIEW'] = 'ANSWERED'
+    status: Union[Status, Literal['NEEDS_REVIEW']] = 'ANSWERED'
     reason: str = ''
     correct_answer: str = ''
     knowledge_point: str = ''
     why_correct: str = ''
     why_others_wrong: dict[str, str] = Field(default_factory=dict)
     learning_takeaway: str = ''
-    student_misunderstanding: str | None = None
+    student_misunderstanding: Optional[str] = None
     evidence: list[Evidence] = Field(default_factory=list)

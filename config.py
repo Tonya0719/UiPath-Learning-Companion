@@ -35,4 +35,5 @@ LLM_BASE_URL = str(_get('LLM_BASE_URL', 'https://api.openai.com/v1')).rstrip('/'
 LLM_MODEL = _get('LLM_MODEL', 'gpt-4.1-mini')
 LLM_TEMPERATURE = float(_get('LLM_TEMPERATURE', '0.0'))
 LLM_TIMEOUT = int(_get('LLM_TIMEOUT', '45'))
+UI_LANGUAGE = str(_get('UI_LANGUAGE', 'zh')).strip().lower()
 DATA_DIR = ROOT / 'data'
