@@ -3,16 +3,35 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+
+def _load_streamlit_secrets():
+    try:
+        import streamlit as st
+    except ImportError:
+        return {}
+    try:
+        return dict(st.secrets)
+    except Exception:
+        return {}
+
+_secrets = _load_streamlit_secrets()
+
 if (ROOT / '.env').exists():
     for line in (ROOT / '.env').read_text(encoding='utf-8-sig').splitlines():
         line = line.strip()
         if line and not line.startswith('#') and '=' in line:
             key, value = line.split('=', 1)
-            os.environ.setdefault(key.strip(), value.strip().strip('\"\''))
-MOCK_LLM = os.getenv('MOCK_LLM', 'true').lower() == 'true'
-LLM_API_KEY = os.getenv('LLM_API_KEY', '')
-LLM_BASE_URL = os.getenv('LLM_BASE_URL', 'https://api.openai.com/v1').rstrip('/')
-LLM_MODEL = os.getenv('LLM_MODEL', 'gpt-4.1-mini')
-LLM_TEMPERATURE = float(os.getenv('LLM_TEMPERATURE', '0.0'))
-LLM_TIMEOUT = int(os.getenv('LLM_TIMEOUT', '45'))
+            os.environ.setdefault(key.strip(), value.strip().strip('\"\'')) 
+
+def _get(key, default):
+    if key in _secrets:
+        return _secrets[key]
+    return os.getenv(key, default)
+
+MOCK_LLM = str(_get('MOCK_LLM', 'true')).lower() == 'true'
+LLM_API_KEY = _get('LLM_API_KEY', '')
+LLM_BASE_URL = str(_get('LLM_BASE_URL', 'https://api.openai.com/v1')).rstrip('/')
+LLM_MODEL = _get('LLM_MODEL', 'gpt-4.1-mini')
+LLM_TEMPERATURE = float(_get('LLM_TEMPERATURE', '0.0'))
+LLM_TIMEOUT = int(_get('LLM_TIMEOUT', '45'))
 DATA_DIR = ROOT / 'data'
