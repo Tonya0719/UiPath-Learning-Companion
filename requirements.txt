@@ -1,0 +1,2 @@
+streamlit==1.63.0
+pydantic>=2.7,<3

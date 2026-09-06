@@ -1,0 +1,20 @@
+[
+  {
+    "id": "DOC-GS-WRITE-RANGE", "type": "official", "topic": "Google Sheets Write Range", "topic_aliases": ["Append", "write range", "spreadsheet"],
+    "content": "Google Workspace Write Range writes a DataTable into a selected spreadsheet range. Append searches for an empty row in the target range or sheet and can insert rows when required. Exact behavior depends on whether the target is an A1 range, named range or sheet. Check the selected spreadsheet, range and write mode when investigating overwritten output.",
+    "source": "UiPath Docs — Google Workspace Write Range", "url": "https://docs.uipath.com/activities/other/latest/productivity/google-workspace-sheets-write-range-connections",
+    "product": "Google Workspace activities / WriteRangeConnections", "version": "latest documentation snapshot; installed package not verified", "checked_on": "2026-09-04", "annotation_source": "assistant_summary_of_official_document"
+  },
+  {
+    "id": "DOC-GS-READ-RANGE", "type": "official", "topic": "Google Sheets Read Range", "topic_aliases": ["DataTable", "headers", "read range"],
+    "content": "Google Workspace Read Range stores selected spreadsheet contents in a DataTable for subsequent activities such as Write Range. Has headers determines whether the first selected row is treated as headers. This activity is not available in API workflows according to this documentation snapshot; distinguish API workflows from the course RPA workflows.",
+    "source": "UiPath Docs — Google Workspace Read Range", "url": "https://docs.uipath.com/activities/other/latest/productivity/google-workspace-sheets-read-range-connections",
+    "product": "Google Workspace activities / ReadRangeConnections", "version": "latest documentation snapshot; installed package not verified", "checked_on": "2026-09-04", "annotation_source": "assistant_summary_of_official_document"
+  },
+  {
+    "id": "DOC-GS-DELETE-RANGE", "type": "official", "topic": "Google Sheets Delete Range", "topic_aliases": ["clear", "delete range", "rows", "columns"],
+    "content": "Google Workspace Delete Range has three deletion behaviors: Clear clears the selected range and is the documented default; Rows removes entire sheet rows in the selection; Columns removes entire sheet columns. These modes have different consequences. Before using it in a classroom cleanup step, check the target range and mode against the exercise, and test on a copy.",
+    "source": "UiPath Docs — Google Workspace Delete Range", "url": "https://docs.uipath.com/activities/other/latest/productivity/google-workspace-sheets-delete-range-connections",
+    "product": "Google Workspace activities / DeleteRangeConnections", "version": "latest documentation snapshot; installed package not verified", "checked_on": "2026-09-04", "annotation_source": "assistant_summary_of_official_document"
+  }
+]

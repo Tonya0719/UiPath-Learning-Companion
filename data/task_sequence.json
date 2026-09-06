@@ -1,0 +1,6 @@
+[
+  {"week": 1, "exercise": "User Interface Automation", "task_ids": ["W1-T-01", "W1-T-02", "W1-T-03", "W1-T-04", "W1-T-05"]},
+  {"week": 2, "exercise": "Data Validation", "task_ids": ["W2-T-01", "W2-T-02", "W2-T-03", "W2-T-04", "W2-T-05"]},
+  {"week": 3, "exercise": "Document Data Extraction", "task_ids": ["W3-T-01", "W3-T-02", "W3-T-03", "W3-T-04", "W3-T-05"]},
+  {"week": 4, "exercise": "Appointment Reply Agent", "task_ids": ["W4-T-01", "W4-T-02", "W4-T-03", "W4-T-04", "W4-T-05"]}
+]
