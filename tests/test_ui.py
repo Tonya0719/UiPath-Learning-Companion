@@ -82,7 +82,7 @@ class UITests(unittest.TestCase):
         self.button('填入出题示例').click().run()
         self.assertFalse(self.app.exception)
         self.assertEqual(self.app.selectbox(key='gen_type').value, 'Workflow Logic')
-        self.assertIn('DataTable', self.app.text_input(key='gen_topic').value)
+        self.assertEqual(self.app.text_input(key='gen_topic').value, 'Google Sheets')
         self.assertNotIn('test_runs', self.app.session_state)
 
     def test_explanation_example_no_generation_required(self):

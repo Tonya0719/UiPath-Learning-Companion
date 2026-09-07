@@ -49,13 +49,13 @@ DEBUG_ZH = {
 }
 
 GENERATE = {
-    "gen_topic": "Difference between DataTable and Google Sheets, and why explicit write-back is needed after editing data",
+    "gen_topic": "Google Sheets",
     "gen_difficulty": "Medium",
     "gen_type": "Workflow Logic",
 }
 
 GENERATE_ZH = {
-    "gen_topic": "DataTable 和 Google Sheets 的区别，以及修改数据后为什么需要显式写回",
+    "gen_topic": "Google Sheets",
     "gen_difficulty": "Medium",
     "gen_type": "Workflow Logic",
 }
